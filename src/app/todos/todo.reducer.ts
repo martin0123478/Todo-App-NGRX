@@ -4,7 +4,9 @@ import { crear } from './todo.actions';
 
 
 export const initialState:Todo[] = [
-  new Todo('Salvar al mundo')
+  new Todo('Salvar al mundo'),
+  new Todo('Vencer a thanos'),
+  new Todo('Comprar traje IronMan'),
 ];
 
 export const todoReducer = createReducer(
