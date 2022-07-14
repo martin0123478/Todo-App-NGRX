@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { filtrosValidos, setFiltro } from 'src/app/filtro/flitro.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-footer.component.css']
 })
 export class TodoFooterComponent implements OnInit {
-
-  constructor() { }
+filtroActual:filtrosValidos ='todos';
+filtros:filtrosValidos[] = ['todos','completados','pendientes'];
+pendientes:number = 0
+  constructor(private strore:Store<AppState>) { }
 
   ngOnInit(): void {
+    // this.strore.select('filtro').subscribe(filtro=>{this.filtroActual = filtro})
+    this.strore.subscribe(state=>{
+      this.filtroActual = state.filtro
+      this.pendientes = state.todos.filter(todo=>
+        !todo.completado
+      ).length
+    })
+  }
+
+  cambiarFiltro(filtro:filtrosValidos){
+    this.strore.dispatch(setFiltro({filtro}))
   }
 
 }
