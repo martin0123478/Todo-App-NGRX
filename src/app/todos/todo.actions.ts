@@ -14,3 +14,8 @@ export const editar = createAction('[TODO] Editar Todo',
 export const borrar = createAction('[TODO] Borrar Todo',
   props<{id:number}>()
 );
+
+//toogleAll
+export const toogleAll = createAction('[TODO] Toogle Todo',
+  props<{completado:boolean}>()
+);
