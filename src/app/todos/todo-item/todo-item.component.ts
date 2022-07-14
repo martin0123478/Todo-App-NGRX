@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Todo } from '../models/todo.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import { toogle, editar } from '../todo.actions';
+import { toogle, editar, borrar } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -48,6 +48,10 @@ export class TodoItemComponent implements OnInit {
       id:this.todo.id,
       texto:this.txtInput.value
     }))
+  }
+
+  borrar(){
+    this.store.dispatch(borrar({id:this.todo.id}))
   }
 
 }
