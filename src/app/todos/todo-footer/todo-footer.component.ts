@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { filtrosValidos, setFiltro } from 'src/app/filtro/flitro.actions';
+import { limpiar } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -26,6 +27,10 @@ pendientes:number = 0
 
   cambiarFiltro(filtro:filtrosValidos){
     this.strore.dispatch(setFiltro({filtro}))
+  }
+
+  limpiar(){
+    this.strore.dispatch(limpiar())
   }
 
 }

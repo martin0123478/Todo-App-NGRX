@@ -3,6 +3,10 @@ export const crear = createAction('[TODO] Crea Todo',
   props<{texto:string}>()
 );
 
+export const limpiar = createAction('[TODO] Limpiar Todo',
+  
+);
+
 export const toogle = createAction('[TODO] Toogle Todo',
   props<{id:number}>()
 );
